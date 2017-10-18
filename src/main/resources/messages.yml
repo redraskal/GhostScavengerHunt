@@ -1,8 +1,8 @@
 
-#                                           #
-#   Pumpkin Smash | Message Configuration   #
-#                By Redraskal               #
-#                                           #
+#                                                #
+#   GhostScavengerHunt | Message Configuration   #
+#                  By Redraskal                  #
+#                                                #
 
 
 ghost-found-message: "&a&lYou found a ghost! &e&l(&a&l{found}/&a&l{total}&e&l)"
