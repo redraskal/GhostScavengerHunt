@@ -10,6 +10,7 @@ import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -68,7 +69,7 @@ public class GhostSkull implements Listener {
 
     @EventHandler
     public void onSkullClick(PlayerInteractEvent event) {
-        if(!event.getAction().toString().contains("RIGHT")) return;
+        if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if(!LocationUtils.center(event.getClickedBlock().getLocation())
                 .equals(LocationUtils.center(this.location))) return;
         if(this.claim(event.getPlayer().getUniqueId())) {
