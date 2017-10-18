@@ -1,6 +1,9 @@
 package me.redraskal.scavengerhunt;
 
 import lombok.Getter;
+import me.redraskal.scavengerhunt.ghost.GhostSkull;
+import me.redraskal.scavengerhunt.ghost.SkullProfile;
+import me.redraskal.scavengerhunt.utils.ConfigUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;

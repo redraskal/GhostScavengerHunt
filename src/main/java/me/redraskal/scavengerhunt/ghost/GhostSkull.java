@@ -1,6 +1,8 @@
-package me.redraskal.scavengerhunt;
+package me.redraskal.scavengerhunt.ghost;
 
 import lombok.Getter;
+import me.redraskal.scavengerhunt.Main;
+import me.redraskal.scavengerhunt.utils.LocationUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;

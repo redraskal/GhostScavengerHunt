@@ -1,4 +1,4 @@
-package me.redraskal.scavengerhunt;
+package me.redraskal.scavengerhunt.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
