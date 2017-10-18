@@ -39,6 +39,8 @@ public class ClaimAnimation implements Listener {
         armorStand.setCustomName(ChatColor.translateAlternateColorCodes('&', "&f&lBoo!"));
         armorStand.setCustomNameVisible(true);
 
+        player.playSound(armorStand.getLocation(), Sound.FIZZ, 3, 0.9f);
+
         new BukkitRunnable() {
             int frames = 0;
             public void run() {

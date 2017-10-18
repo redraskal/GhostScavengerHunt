@@ -7,6 +7,7 @@
 
 ghost-found-message: "&a&lYou found a ghost! &e&l(&a&l{found}/&a&l{total}&e&l)"
 find-message: "&e&lFind all of them to earn a &b&lsuper reward&e&l!"
+ghosts-found-message: "&a&lCongratulations! You found all the ghosts!"
 
 already-found-message: "&c&lYou already found this ghost!"
 cannot-break-skull-message: "&c&lYou cannot break this skull!"
