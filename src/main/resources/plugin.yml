@@ -1,0 +1,21 @@
+main: me.redraskal.scavengerhunt.Main
+name: ${project.name}
+author: redraskal
+version: ${project.version}
+description: "A Halloween scavenger hunt plugin based off of a popular network!"
+website: "https://github.com/redraskal/GhostScavengerHunt"
+
+commands:
+  ghostskull:
+    description: "Gives yourself a Ghost skull to add to the Scavenger Hunt."
+
+permissions:
+  ghostskull.*:
+    children:
+      ghostskull.spawn: true
+      ghostskull.break: true
+    default: op
+  ghostskull.spawn:
+    default: op
+  ghostskull.break:
+    default: op
