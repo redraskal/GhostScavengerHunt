@@ -3,10 +3,10 @@ package me.redraskal.scavengerhunt.ghost;
 import lombok.Getter;
 import me.redraskal.scavengerhunt.Main;
 import me.redraskal.scavengerhunt.utils.LocationUtils;
+import me.redraskal.scavengerhunt.utils.Sounds;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -74,7 +74,7 @@ public class GhostSkull implements Listener {
                 .equals(LocationUtils.center(this.location))) return;
         if(this.claim(event.getPlayer().getUniqueId())) {
             if(this.getPlugin().getSkullCount(event.getPlayer().getUniqueId()) >= this.getPlugin().getGhostSkulls().size()) {
-                event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.LEVEL_UP, 10, 0.9f);
+                event.getPlayer().playSound(event.getPlayer().getLocation(), Sounds.LEVEL_UP.spigot(), 10, 0.9f);
                 event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', this.getPlugin().getMessageFile().getString("ghosts-found-message")));
                 this.getPlugin().getConfig().getStringList("reward-commands").forEach(command -> {
                     this.getPlugin().getServer().dispatchCommand(Bukkit.getConsoleSender(),
@@ -83,7 +83,7 @@ public class GhostSkull implements Listener {
                                     .replace("{total}", "" + this.getPlugin().getSkullCount(event.getPlayer().getUniqueId())));
                 });
             } else {
-                event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.GHAST_FIREBALL, 10, 1.2f);
+                event.getPlayer().playSound(event.getPlayer().getLocation(), Sounds.GHAST_FIREBALL.spigot(), 10, 1.2f);
                 event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', this.getPlugin().getMessageFile().getString("ghost-found-message"))
                         .replace("{found}", "" + this.getPlugin().getSkullCount(event.getPlayer().getUniqueId()))
                         .replace("{total}", "" + this.getPlugin().getGhostSkulls().size()));
@@ -91,7 +91,7 @@ public class GhostSkull implements Listener {
             }
             new ClaimAnimation(event.getPlayer(), this);
         } else {
-            event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.NOTE_BASS, 10, 1);
+            event.getPlayer().playSound(event.getPlayer().getLocation(), Sounds.NOTE_BASS.spigot(), 10, 1);
             event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', this.getPlugin().getMessageFile().getString("already-found-message")));
         }
     }

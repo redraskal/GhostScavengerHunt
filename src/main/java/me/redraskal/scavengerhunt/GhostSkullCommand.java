@@ -1,7 +1,7 @@
 package me.redraskal.scavengerhunt;
 
+import me.redraskal.scavengerhunt.utils.Sounds;
 import org.bukkit.ChatColor;
-import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -31,7 +31,7 @@ public class GhostSkullCommand implements CommandExecutor {
                 player.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
             } else {
                 player.getInventory().addItem(plugin.constructGhostSkull());
-                player.playSound(player.getLocation(), Sound.NOTE_PLING, 10, 1.2f);
+                player.playSound(player.getLocation(), Sounds.NOTE_PLING.spigot(), 10, 1.2f);
                 player.sendMessage(ChatColor.GREEN + "You have obtained a Ghost skull.");
             }
         }

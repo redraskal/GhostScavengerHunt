@@ -2,6 +2,7 @@ package me.redraskal.scavengerhunt.ghost;
 
 import me.redraskal.scavengerhunt.utils.InventoryUtils;
 import me.redraskal.scavengerhunt.utils.LocationUtils;
+import me.redraskal.scavengerhunt.utils.Sounds;
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
@@ -39,7 +40,7 @@ public class ClaimAnimation implements Listener {
         armorStand.setCustomName(ChatColor.translateAlternateColorCodes('&', "&f&lBoo!"));
         armorStand.setCustomNameVisible(true);
 
-        player.playSound(armorStand.getLocation(), Sound.FIZZ, 3, 0.9f);
+        player.playSound(armorStand.getLocation(), Sounds.FIZZ.spigot(), 3, 0.9f);
 
         new BukkitRunnable() {
             int frames = 0;
