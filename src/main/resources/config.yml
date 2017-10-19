@@ -16,6 +16,18 @@ reward-commands:
   - "say {name} just found all the ghosts!"
   - "eco give {name} 1000"
 
+# Runs the specified console command(s)
+# for when a player finds the specified
+# amount of ghosts.
+#
+#  Placeholders are above.
+single-reward-commands:
+  1:
+    - "say {name} has started the Ghost Scavenger Hunt!"
+  5:
+    - "say {name} is half way there! (5/{total})"
+
+
 # If you want to change the ghost skull texture,
 # you might as well make the armor color fit! :D
 #

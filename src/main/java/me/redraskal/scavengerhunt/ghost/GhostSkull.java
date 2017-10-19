@@ -88,6 +88,16 @@ public class GhostSkull implements Listener {
                         .replace("{found}", "" + this.getPlugin().getSkullCount(event.getPlayer().getUniqueId()))
                         .replace("{total}", "" + this.getPlugin().getGhostSkulls().size()));
                 event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', this.getPlugin().getMessageFile().getString("find-message")));
+                this.getPlugin().getConfig().getConfigurationSection("single-reward-commands").getKeys(false).forEach(needed -> {
+                    if(this.getPlugin().getSkullCount(event.getPlayer().getUniqueId()) == Integer.parseInt(needed)) {
+                        this.getPlugin().getConfig().getStringList("single-reward-commands." + needed).forEach(command -> {
+                            this.getPlugin().getServer().dispatchCommand(Bukkit.getConsoleSender(),
+                                    command.replace("{name}", event.getPlayer().getName())
+                                            .replace("{uuid}", event.getPlayer().getUniqueId().toString())
+                                            .replace("{total}", "" + this.getPlugin().getSkullCount(event.getPlayer().getUniqueId())));
+                        });
+                    }
+                });
             }
             new ClaimAnimation(event.getPlayer(), this);
         } else {
