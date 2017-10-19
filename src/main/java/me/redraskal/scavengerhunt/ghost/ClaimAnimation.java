@@ -1,5 +1,6 @@
 package me.redraskal.scavengerhunt.ghost;
 
+import me.redraskal.scavengerhunt.utils.ConfigUtils;
 import me.redraskal.scavengerhunt.utils.InventoryUtils;
 import me.redraskal.scavengerhunt.utils.LocationUtils;
 import me.redraskal.scavengerhunt.utils.Sounds;
@@ -35,7 +36,8 @@ public class ClaimAnimation implements Listener {
         armorStand.setBasePlate(false);
 
         armorStand.setHelmet(ghostSkull.getPlugin().constructGhostSkull());
-        armorStand.setChestplate(InventoryUtils.applyArmorColor(new ItemStack(Material.LEATHER_CHESTPLATE), Color.WHITE));
+        armorStand.setChestplate(InventoryUtils.applyArmorColor(new ItemStack(Material.LEATHER_CHESTPLATE),
+                ConfigUtils.decodeColor(ghostSkull.getPlugin().getConfig().getString("ghost-armor-color"))));
 
         armorStand.setCustomName(ChatColor.translateAlternateColorCodes('&', "&f&lBoo!"));
         armorStand.setCustomNameVisible(true);

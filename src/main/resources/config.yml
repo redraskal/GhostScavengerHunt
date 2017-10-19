@@ -16,6 +16,15 @@ reward-commands:
   - "say {name} just found all the ghosts!"
   - "eco give {name} 1000"
 
+# If you want to change the ghost skull texture,
+# you might as well make the armor color fit! :D
+#
+# Here's the color picker!
+#   https://www.google.com/search?q=hex+color+picker
+#
+# Copy the value with the # at the beginning
+ghost-armor-color: "#ffffff"
+
 # If for whatever reason you hate the skull texture with a passion, change it here!
 ghost-skull-hash: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjhkMjE4MzY0MDIxOGFiMzMwYWM1NmQyYWFiN2UyOWE5NzkwYTU0NWY2OTE2MTllMzg1NzhlYTRhNjlhZTBiNiJ9fX0="
 
