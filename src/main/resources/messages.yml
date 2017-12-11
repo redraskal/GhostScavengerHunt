@@ -5,6 +5,8 @@
 #                                                #
 
 
+ghost-name: "&f&lBoo!"
+
 ghost-found-message: "&a&lYou found a ghost! &e&l(&a&l{found}/&a&l{total}&e&l)"
 find-message: "&e&lFind all of them to earn a &b&lsuper reward&e&l!"
 ghosts-found-message: "&a&lCongratulations! You found all the ghosts!"

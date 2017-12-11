@@ -39,7 +39,8 @@ public class ClaimAnimation implements Listener {
         armorStand.setChestplate(InventoryUtils.applyArmorColor(new ItemStack(Material.LEATHER_CHESTPLATE),
                 ConfigUtils.decodeColor(ghostSkull.getPlugin().getConfig().getString("ghost-armor-color"))));
 
-        armorStand.setCustomName(ChatColor.translateAlternateColorCodes('&', "&f&lBoo!"));
+        armorStand.setCustomName(ChatColor.translateAlternateColorCodes('&',
+                ghostSkull.getPlugin().getMessageFile().getString("ghost-name")));
         armorStand.setCustomNameVisible(true);
 
         player.playSound(armorStand.getLocation(), Sounds.FIZZ.spigot(), 3, 0.9f);
