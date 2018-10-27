@@ -3,16 +3,18 @@ package me.redraskal.scavengerhunt.ghost;
 import lombok.Getter;
 import me.redraskal.scavengerhunt.Main;
 import me.redraskal.scavengerhunt.utils.LocationUtils;
-import me.redraskal.scavengerhunt.utils.Sounds;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 
 import java.io.IOException;
 import java.util.List;
@@ -41,7 +43,7 @@ public class GhostSkull implements Listener {
         this.location = location;
         this.claimed = claimed;
 
-        this.plugin.getServer().getPluginManager().registerEvents(this, this.plugin);
+        this.plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     public boolean claim(UUID uuid) {
@@ -69,12 +71,13 @@ public class GhostSkull implements Listener {
 
     @EventHandler
     public void onSkullClick(PlayerInteractEvent event) {
-        if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if(event.getAction() != Action.RIGHT_CLICK_BLOCK || event.getHand() != EquipmentSlot.HAND) return;
         if(!LocationUtils.center(event.getClickedBlock().getLocation())
                 .equals(LocationUtils.center(this.location))) return;
+        event.setCancelled(true);
         if(this.claim(event.getPlayer().getUniqueId())) {
             if(this.getPlugin().getSkullCount(event.getPlayer().getUniqueId()) >= this.getPlugin().getGhostSkulls().size()) {
-                event.getPlayer().playSound(event.getPlayer().getLocation(), Sounds.LEVEL_UP.spigot(), 10, 0.9f);
+                event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 0.9f);
                 event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', this.getPlugin().getMessageFile().getString("ghosts-found-message")));
                 this.getPlugin().getConfig().getStringList("reward-commands").forEach(command -> {
                     this.getPlugin().getServer().dispatchCommand(Bukkit.getConsoleSender(),
@@ -83,7 +86,7 @@ public class GhostSkull implements Listener {
                                     .replace("{total}", "" + this.getPlugin().getSkullCount(event.getPlayer().getUniqueId())));
                 });
             } else {
-                event.getPlayer().playSound(event.getPlayer().getLocation(), Sounds.GHAST_FIREBALL.spigot(), 10, 1.2f);
+                event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_GHAST_SHOOT, 10, 1.2f);
                 event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', this.getPlugin().getMessageFile().getString("ghost-found-message"))
                         .replace("{found}", "" + this.getPlugin().getSkullCount(event.getPlayer().getUniqueId()))
                         .replace("{total}", "" + this.getPlugin().getGhostSkulls().size()));
@@ -101,7 +104,7 @@ public class GhostSkull implements Listener {
             }
             new ClaimAnimation(event.getPlayer(), this);
         } else {
-            event.getPlayer().playSound(event.getPlayer().getLocation(), Sounds.NOTE_BASS.spigot(), 10, 1);
+            event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 10, 1);
             event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', this.getPlugin().getMessageFile().getString("already-found-message")));
         }
     }

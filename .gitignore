@@ -2,6 +2,9 @@
 target
 *.jar
 
-# IntelliJ :D
-.idea
-*.iml
+# VSCode Stuff
+.settings
+.vscode
+.factorypath
+.classpath
+.project

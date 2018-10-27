@@ -4,10 +4,16 @@ import lombok.Getter;
 import me.redraskal.scavengerhunt.ghost.GhostSkull;
 import me.redraskal.scavengerhunt.ghost.SkullProfile;
 import me.redraskal.scavengerhunt.utils.ConfigUtils;
+
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.attribute.AttributeModifier.Operation;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
@@ -82,10 +88,11 @@ public class Main extends JavaPlugin implements Listener {
     }
 
     public ItemStack constructGhostSkull() {
-        ItemStack itemStack = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        ItemStack itemStack = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
 
         skullMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&f&lGhost Skull"));
+        skullMeta.addAttributeModifier(Attribute.HORSE_JUMP_STRENGTH, new AttributeModifier(UUID.randomUUID(), "AdditionalDamage", 1D, Operation.ADD_NUMBER));
         itemStack.setItemMeta(skullMeta);
 
         new SkullProfile(this.getConfig().getString("ghost-skull-hash"))
@@ -96,10 +103,9 @@ public class Main extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onSkullPlace(BlockPlaceEvent event) {
-        if(!event.getItemInHand().hasItemMeta()) return;
+        if(!event.getItemInHand().hasItemMeta() || !event.getItemInHand().getItemMeta().hasDisplayName()) return;
         ItemMeta itemMeta = event.getItemInHand().getItemMeta();
-        if(!itemMeta.getDisplayName().equals(
-                ChatColor.translateAlternateColorCodes('&', "&f&lGhost Skull"))) return;
+        if(!ChatColor.stripColor(itemMeta.getDisplayName()).equals("Ghost Skull") || itemMeta.getAttributeModifiers(Attribute.HORSE_JUMP_STRENGTH) == null) return;
         GhostSkull ghostSkull = new GhostSkull(this, UUID.randomUUID(), event.getBlockPlaced().getLocation(), new ArrayList<>());
         this.dataFile.set(ghostSkull.getUuid() + ".location", ConfigUtils.encodeLocation(ghostSkull.getLocation()));
         this.dataFile.set(ghostSkull.getUuid() + ".claimed", new ArrayList<>());

@@ -3,7 +3,6 @@ package me.redraskal.scavengerhunt.ghost;
 import me.redraskal.scavengerhunt.utils.ConfigUtils;
 import me.redraskal.scavengerhunt.utils.InventoryUtils;
 import me.redraskal.scavengerhunt.utils.LocationUtils;
-import me.redraskal.scavengerhunt.utils.Sounds;
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
@@ -43,7 +42,7 @@ public class ClaimAnimation implements Listener {
                 ghostSkull.getPlugin().getMessageFile().getString("ghost-name")));
         armorStand.setCustomNameVisible(true);
 
-        player.playSound(armorStand.getLocation(), Sounds.FIZZ.spigot(), 3, 0.9f);
+        player.playSound(armorStand.getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 3, 0.9f);
 
         new BukkitRunnable() {
             int frames = 0;
@@ -59,9 +58,10 @@ public class ClaimAnimation implements Listener {
                     newLocation.setYaw(newLocation.getYaw()+18f);
                     armorStand.teleport(newLocation);
                 }
-                player.spigot().playEffect(armorStand.getLocation().clone().add(0, 0.5, 0), Effect.CLOUD,
-                        0, 0, 0, 0, 0,
-                        0, 3, 15);
+                armorStand.getWorld().spawnParticle(Particle.CLOUD, armorStand.getLocation().clone().add(0, 0.5, 0),
+                        3,
+                        0, 0, 0,
+                        0);
                 frames++;
             }
         }.runTaskTimer(ghostSkull.getPlugin(), 0, 1L);
