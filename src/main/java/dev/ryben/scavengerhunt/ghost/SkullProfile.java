@@ -1,4 +1,4 @@
-package me.redraskal.scavengerhunt.ghost;
+package dev.ryben.scavengerhunt.ghost;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;

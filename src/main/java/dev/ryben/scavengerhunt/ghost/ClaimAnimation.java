@@ -1,8 +1,8 @@
-package me.redraskal.scavengerhunt.ghost;
+package dev.ryben.scavengerhunt.ghost;
 
-import me.redraskal.scavengerhunt.utils.ConfigUtils;
-import me.redraskal.scavengerhunt.utils.InventoryUtils;
-import me.redraskal.scavengerhunt.utils.LocationUtils;
+import dev.ryben.scavengerhunt.utils.ConfigUtils;
+import dev.ryben.scavengerhunt.utils.InventoryUtils;
+import dev.ryben.scavengerhunt.utils.LocationUtils;
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;

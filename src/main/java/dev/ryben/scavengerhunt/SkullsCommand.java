@@ -1,4 +1,4 @@
-package me.redraskal.scavengerhunt;
+package dev.ryben.scavengerhunt;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

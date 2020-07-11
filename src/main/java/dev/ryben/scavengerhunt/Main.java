@@ -1,9 +1,9 @@
-package me.redraskal.scavengerhunt;
+package dev.ryben.scavengerhunt;
 
 import lombok.Getter;
-import me.redraskal.scavengerhunt.ghost.GhostSkull;
-import me.redraskal.scavengerhunt.ghost.SkullProfile;
-import me.redraskal.scavengerhunt.utils.ConfigUtils;
+import dev.ryben.scavengerhunt.ghost.GhostSkull;
+import dev.ryben.scavengerhunt.ghost.SkullProfile;
+import dev.ryben.scavengerhunt.utils.ConfigUtils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

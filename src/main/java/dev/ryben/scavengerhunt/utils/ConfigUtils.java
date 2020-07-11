@@ -1,4 +1,4 @@
-package me.redraskal.scavengerhunt.utils;
+package dev.ryben.scavengerhunt.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
