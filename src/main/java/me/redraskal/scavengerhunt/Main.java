@@ -5,7 +5,6 @@ import me.redraskal.scavengerhunt.ghost.GhostSkull;
 import me.redraskal.scavengerhunt.ghost.SkullProfile;
 import me.redraskal.scavengerhunt.utils.ConfigUtils;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -13,7 +12,6 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.attribute.AttributeModifier.Operation;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
@@ -76,6 +74,7 @@ public class Main extends JavaPlugin implements Listener {
         });
 
         this.getCommand("ghostskull").setExecutor(new GhostSkullCommand(this));
+        this.getCommand("skulls").setExecutor(new SkullsCommand(this));
         this.getServer().getPluginManager().registerEvents(this, this);
     }
 

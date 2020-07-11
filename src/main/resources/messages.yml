@@ -13,3 +13,5 @@ ghosts-found-message: "&a&lCongratulations! You found all the ghosts!"
 
 already-found-message: "&c&lYou already found this ghost!"
 cannot-break-skull-message: "&c&lYou cannot break this skull!"
+
+ghosts-found-command-message: "&9You have found {found}/{total} skulls!"
