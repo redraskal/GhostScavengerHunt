@@ -2,13 +2,15 @@ main: me.redraskal.scavengerhunt.Main
 name: ${project.name}
 author: redraskal
 version: ${project.version}
-api-version: 1.13
+api-version: 1.16
 description: "A Halloween scavenger hunt plugin based off of a popular network!"
 website: "https://github.com/redraskal/GhostScavengerHunt"
 
 commands:
   ghostskull:
     description: "Gives yourself a Ghost skull to add to the Scavenger Hunt."
+  skulls:
+    description: "Displays the amount of skulls you have collected."
 
 permissions:
   ghostskull.*:
