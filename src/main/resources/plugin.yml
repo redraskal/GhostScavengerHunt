@@ -1,10 +1,10 @@
-main: me.redraskal.scavengerhunt.Main
+main: dev.ryben.scavengerhunt.Main
 name: ${project.name}
 author: redraskal
 version: ${project.version}
 api-version: 1.16
 description: "A Halloween scavenger hunt plugin based off of a popular network!"
-website: "https://github.com/redraskal/GhostScavengerHunt"
+website: "https://github.com/JediMasterSoda/GhostScavengerHunt"
 
 commands:
   ghostskull:
