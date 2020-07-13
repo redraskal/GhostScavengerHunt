@@ -75,6 +75,13 @@ public class GhostSkull implements Listener {
                 .equals(LocationUtils.center(this.location))) return;
         event.setCancelled(true);
         if(this.claim(event.getPlayer().getUniqueId())) {
+            this.getPlugin().getConfig().getStringList("custom-commands").forEach(command -> {
+                this.getPlugin().getServer().dispatchCommand(Bukkit.getConsoleSender(),
+                        command.replace("{name}", event.getPlayer().getName())
+                                .replace("{uuid}", event.getPlayer().getUniqueId().toString())
+                                .replace("{total}", "" + this.getPlugin().getSkullCount(event.getPlayer().getUniqueId())));
+            });
+
             if(this.getPlugin().getSkullCount(event.getPlayer().getUniqueId()) >= this.getPlugin().getGhostSkulls().size()) {
                 event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 0.9f);
                 event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', this.getPlugin().getMessageFile().getString("ghosts-found-message")));

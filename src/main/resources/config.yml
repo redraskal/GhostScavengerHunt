@@ -27,6 +27,12 @@ single-reward-commands:
   5:
     - "say {name} is half way there! (5/{total})"
 
+# Runs the specified console command(s)
+# for when a player finds a ghost.
+#
+#  Placeholders are above.
+custom-commands:
+- "say {name} has found a skull!"
 
 # If you want to change the ghost skull texture,
 # you might as well make the armor color fit! :D
@@ -42,6 +48,14 @@ ghost-skull-hash: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5ta
 
 # You are able to toggle the ghost animation here.
 enable-ghost-animation: true
+
+# You are able to modify the sound effects when a ghost is claimed.
+#
+# Full list of sounds: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+ghost-claim-sounds:
+  BLOCK_FIRE_EXTINGUISH:
+    volume: 3
+    pitch: 0.9
 
 #
 #   Thanks for downloading!
