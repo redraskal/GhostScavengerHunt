@@ -1,10 +1,12 @@
 package dev.ryben.scavengerhunt;
 
 import lombok.Getter;
+import dev.ryben.scavengerhunt.extension.PlaceholderAPIExtension;
 import dev.ryben.scavengerhunt.ghost.GhostSkull;
 import dev.ryben.scavengerhunt.ghost.SkullProfile;
 import dev.ryben.scavengerhunt.utils.ConfigUtils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -72,6 +74,12 @@ public class Main extends JavaPlugin implements Listener {
             });
             this.ghostSkulls.add(new GhostSkull(this, UUID.fromString(key), ConfigUtils.decodeLocation(dataFile.getString(key + ".location")), claimed));
         });
+
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            getLogger().info("Hooking into PlaceholderAPI...");
+
+            new PlaceholderAPIExtension(this).register();
+        }
 
         this.getCommand("ghostskull").setExecutor(new GhostSkullCommand(this));
         this.getCommand("skulls").setExecutor(new SkullsCommand(this));
