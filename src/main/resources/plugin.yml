@@ -6,6 +6,7 @@ api-version: 1.16
 description: "A Halloween scavenger hunt plugin based off of a popular network!"
 website: "https://github.com/JediMasterSoda/GhostScavengerHunt"
 load: POSTWORLD
+softdepend: [PlaceholderAPI]
 
 commands:
   ghostskull:
