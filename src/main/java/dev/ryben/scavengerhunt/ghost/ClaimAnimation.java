@@ -3,6 +3,9 @@ package dev.ryben.scavengerhunt.ghost;
 import dev.ryben.scavengerhunt.utils.ConfigUtils;
 import dev.ryben.scavengerhunt.utils.InventoryUtils;
 import dev.ryben.scavengerhunt.utils.LocationUtils;
+
+import java.util.Set;
+
 import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
@@ -42,7 +45,23 @@ public class ClaimAnimation implements Listener {
                 ghostSkull.getPlugin().getMessageFile().getString("ghost-name")));
         armorStand.setCustomNameVisible(true);
 
-        player.playSound(armorStand.getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 3, 0.9f);
+        Set<String> soundKeys = ghostSkull.getPlugin().getConfig().getConfigurationSection("ghost-claim-sounds").getKeys(false);
+
+        if(soundKeys != null && soundKeys.size() > 0) {
+            soundKeys.forEach(soundKey -> {
+                Sound sound = Sound.valueOf(soundKey.toUpperCase());
+                String fullKey = "ghost-claim-sounds." + soundKey.toUpperCase();
+
+                if(sound != null) {
+                    float volume = (float) ghostSkull.getPlugin().getConfig().getDouble(fullKey + ".volume", 1);
+                    float pitch = (float) ghostSkull.getPlugin().getConfig().getDouble(fullKey + ".pitch", 1);
+
+                    player.playSound(armorStand.getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, volume, pitch);
+                }
+            });
+        } else {
+            player.playSound(armorStand.getLocation(), Sound.BLOCK_FIRE_EXTINGUISH, 3, 0.9f);
+        }
 
         new BukkitRunnable() {
             int frames = 0;
