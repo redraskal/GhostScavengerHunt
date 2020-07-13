@@ -73,6 +73,8 @@ public class PlaceholderAPIExtension extends PlaceholderExpansion {
         return "" + plugin.getSkullCount(player.getUniqueId());
       } else if(identifier.equalsIgnoreCase("player_left")) {
         return "" + (plugin.getGhostSkulls().size() - plugin.getSkullCount(player.getUniqueId()));
+      } else if(identifier.equalsIgnoreCase("total")) {
+        return "" + plugin.getGhostSkulls().size();
       } else {
         return null;
       }
