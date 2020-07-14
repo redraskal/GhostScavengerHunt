@@ -62,22 +62,18 @@ public class PlaceholderAPIExtension extends PlaceholderExpansion {
    */
   @Override
   public String onRequest(OfflinePlayer player, String identifier) {
-    if(player == null) {
-      if(identifier.equalsIgnoreCase("total")) {
-        return "" + plugin.getGhostSkulls().size();
-      } else {
-        return null;
-      }
-    } else {
+    if(identifier.equalsIgnoreCase("total")) {
+      return "" + plugin.getGhostSkulls().size();
+    } else if(player != null) {
       if(identifier.equalsIgnoreCase("player_found")) {
         return "" + plugin.getSkullCount(player.getUniqueId());
       } else if(identifier.equalsIgnoreCase("player_left")) {
         return "" + (plugin.getGhostSkulls().size() - plugin.getSkullCount(player.getUniqueId()));
-      } else if(identifier.equalsIgnoreCase("total")) {
-        return "" + plugin.getGhostSkulls().size();
       } else {
         return null;
       }
+    } else {
+      return null;
     }
   }
 }
