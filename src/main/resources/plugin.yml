@@ -2,7 +2,7 @@ main: dev.ryben.scavengerhunt.Main
 name: ${project.name}
 author: redraskal
 version: ${project.version}
-api-version: 1.16
+api-version: 1.13
 description: "A Halloween scavenger hunt plugin based off of a popular network!"
 website: "https://github.com/JediMasterSoda/GhostScavengerHunt"
 load: POSTWORLD
